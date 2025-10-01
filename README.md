@@ -1,7 +1,6 @@
 # Check for Python Warnings Action
 
 [![CI](https://github.com/QuantEcon/action-check-warnings/actions/workflows/ci.yml/badge.svg)](https://github.com/QuantEcon/action-check-warnings/actions/workflows/ci.yml)
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Check%20Python%20Warnings-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=data:image/png;base64,iVBORw0KGgoAAAANS[...]
 
 A GitHub Action that scans HTML files for Python warnings within code cell outputs and optionally fails the workflow if any are found. Perfect for ensuring documentation builds are warning-free.
 
