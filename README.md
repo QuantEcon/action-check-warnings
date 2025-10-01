@@ -1,7 +1,7 @@
 # Check for Python Warnings Action
 
 [![CI](https://github.com/QuantEcon/action-check-warnings/actions/workflows/ci.yml/badge.svg)](https://github.com/QuantEcon/action-check-warnings/actions/workflows/ci.yml)
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Check%20Python%20Warnings-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAM6wAADOsB5dZE0gAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAERSURBVCiRhZG/SsMxFEafKoEMFhyrdsFt6FYHNycunTo0Q4LgEhcnW4PgYgchGjoYiQ6ON2ARpK9nCxjUjuIFP+B+h3O/xmE2yVxPOJGkC3RgJ8qA3bQn7SiTKCQdC4J8HDW0v85CZaUHNzxhQcHdJvjZwM4mXaKJ4BdDMKxIsYoim1Smk2X6HPUdCnU5gO5D9POqvayBzY8nwoJJ+G9h9vGB0U8h8dNPgGLKlv1n6cJgAjjfY9lv1CVKq5f3oUAe5dJz9n3RkBhGA1ouJ/hT5a4c8yQQYSdF8vhN5gT1igMgZ9nJgzUqm9E1V+8rbYQhptmEURKA=)](https://github.com/marketplace/actions/check-python-warnings)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Check%20Python%20Warnings-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=data:image/png;base64,iVBORw0KGgoAAAANS[...]
 
 A GitHub Action that scans HTML files for Python warnings within code cell outputs and optionally fails the workflow if any are found. Perfect for ensuring documentation builds are warning-free.
 
@@ -17,16 +17,16 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
     - name: Check for warnings
-      uses: QuantEcon/action-check-warnings@v1
+      uses: QuantEcon/action-check-warnings@v1.0.0
       with:
-    html-path: './_build/html'
+        html-path: './_build/html'
 ```
 
 ## Features
 
 - Scans HTML files for configurable Python warnings **within code cell outputs only**
 - Prevents false positives by only checking warnings in `cell_output` HTML elements
-- Supports multiple warning types (all Python warning types by default: UserWarning, DeprecationWarning, PendingDeprecationWarning, SyntaxWarning, RuntimeWarning, FutureWarning, ImportWarning, UnicodeWarning, BytesWarning, ResourceWarning, EncodingWarning)
+- Supports multiple warning types (all Python warning types by default: UserWarning, DeprecationWarning, PendingDeprecationWarning, SyntaxWarning, RuntimeWarning, FutureWarning, ImportWarning, Uni[...]
 - Provides detailed output about warnings found
 - Optionally fails the workflow when warnings are detected
 - **Creates GitHub issues** with detailed warning reports
@@ -40,14 +40,14 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
 ```
 
 ### Advanced Usage with PR Comments
 
 ```yaml
 - name: Check for Python warnings with PR feedback
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -58,7 +58,7 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings with issue creation
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -71,7 +71,7 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings with assigned issue
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -85,7 +85,7 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings with artifact
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -98,7 +98,7 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings in build output
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -116,7 +116,7 @@ Sometimes you may want to temporarily exclude certain warning types (e.g., when 
 
 ```yaml
 - name: Check for Python warnings excluding upstream warnings
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     exclude-warning: 'UserWarning'  # Exclude single warning type
@@ -125,7 +125,7 @@ Sometimes you may want to temporarily exclude certain warning types (e.g., when 
 
 ```yaml
 - name: Check for Python warnings excluding multiple warning types
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     exclude-warning: 'UserWarning,RuntimeWarning,ResourceWarning'  # Exclude multiple warnings
@@ -138,7 +138,7 @@ You can combine custom warning lists with exclusions:
 
 ```yaml
 - name: Check for specific warnings but exclude problematic ones
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     warnings: 'UserWarning,DeprecationWarning,RuntimeWarning,ResourceWarning'
@@ -151,7 +151,7 @@ You can combine custom warning lists with exclusions:
 ```yaml
 - name: Check for Python warnings
   id: warning-check
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     fail-on-warning: 'false'
 
@@ -217,7 +217,7 @@ You can enable both issue creation and artifact generation simultaneously:
 
 ```yaml
 - name: Comprehensive warning check
-  uses: QuantEcon/action-check-warnings@v1
+  uses: QuantEcon/action-check-warnings@v1.0.0
   with:
     html-path: './_build/html'
     fail-on-warning: 'false'  # Don't fail, just report
@@ -227,7 +227,7 @@ You can enable both issue creation and artifact generation simultaneously:
 
 ## How It Works
 
-This action specifically searches for Python warnings within HTML elements that have `cell_output` in their class attribute. This approach prevents false positives that would occur if warnings like "FutureWarning" or "DeprecationWarning" are mentioned in the text content of documentation pages.
+This action specifically searches for Python warnings within HTML elements that have `cell_output` in their class attribute. This approach prevents false positives that would occur if warnings li[...]
 
 ### Example HTML Structure
 
@@ -262,138 +262,4 @@ permissions:
   pull-requests: write   # For posting PR comments (when fail-on-warning is true OR create-issue is true in PRs)
 ```
 
-If you're only using the basic warning check functionality, only `contents: read` is required. Add `pull-requests: write` when you want PR comments on warnings or when using issue creation in PR contexts.
-
-## Inputs
-
-| Input | Description | Required | Default |
-|-------|-------------|----------|---------|
-| `html-path` | Path to directory containing HTML files to scan | No | `.` |
-| `warnings` | Comma-separated list of warnings to check for | No | `UserWarning,DeprecationWarning,PendingDeprecationWarning,SyntaxWarning,RuntimeWarning,FutureWarning,ImportWarning,UnicodeWarning,BytesWarning,ResourceWarning,EncodingWarning` |
-| `exclude-warning` | Comma-separated list of warnings to exclude from checking (can be a single warning or multiple warnings) | No | `` |
-| `fail-on-warning` | Whether to fail the workflow if warnings are found | No | `true` |
-| `create-issue` | Whether to create a GitHub issue when warnings are found | No | `false` |
-| `issue-title` | Title for the GitHub issue when warnings are found | No | `Python Warnings Found in Documentation Build` |
-| `create-artifact` | Whether to create a workflow artifact with the warning report | No | `false` |
-| `artifact-name` | Name for the workflow artifact containing the warning report | No | `warning-report` |
-| `notify` | GitHub username(s) to assign to the created issue (comma-separated for multiple users) | No | `` |
-
-## Outputs
-
-| Output | Description |
-|--------|-------------|
-| `warnings-found` | Whether warnings were found (`true`/`false`) |
-| `warning-count` | Number of warnings found |
-| `warning-details` | Details of warnings found |
-| `issue-url` | URL of the created GitHub issue (if `create-issue` is enabled) |
-| `artifact-path` | Path to the created artifact file (if `create-artifact` is enabled) |
-
-## Example Workflow
-
-Here's a complete example of how to use this action in a workflow:
-
-```yaml
-name: Build and Check Documentation
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-permissions:
-  contents: read
-  issues: write
-  actions: read
-  pull-requests: write
-
-jobs:
-  build-and-check:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-    
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-    
-    - name: Build documentation
-      run: |
-        jupyter-book build .
-    
-    - name: Check for Python warnings
-      uses: QuantEcon/action-check-warnings@v1
-      with:
-        html-path: './_build/html'
-        # Uses comprehensive default warnings (all Python warning types)
-        fail-on-warning: ${{ github.event_name == 'push' }}  # Fail on push, warn on PR
-        create-issue: ${{ github.event_name == 'push' }}     # Create issues for main branch
-        notify: 'maintainer1,reviewer2'                      # Assign issues to team members
-        create-artifact: 'true'                              # Always create artifacts
-        artifact-name: 'warning-report'
-```
-
-## Use Case
-
-This action is particularly useful for:
-
-1. **Documentation builds**: After building Jupyter Books or Sphinx documentation, check that no Python warnings appear in the generated HTML
-2. **Code execution**: When running notebooks or Python scripts that generate HTML output, ensure no warnings are present
-3. **Continuous Integration**: Maintain code quality by preventing warnings from being introduced
-
-## How It Works
-
-1. The action searches for all `.html` files in the specified directory
-2. For each HTML file, it searches for the specified warning strings
-3. If warnings are found, it reports the details and optionally fails the workflow
-4. The action provides outputs that can be used by subsequent steps
-
-## Error Handling
-
-- If the specified HTML path doesn't exist, the action will fail with an error
-- The action will report the exact location (file and line number) where warnings are found
-- When `fail-on-warning` is `true`, the workflow will fail if any warnings are detected
-
-## Tips for Usage
-
-1. **Place the warning check after your build step**: The action needs the final HTML output to scan.
-
-2. **Use `fail-on-warning: 'false'` for reporting**: If you want to report warnings without failing the workflow.
-
-3. **Customize warning types**: Adjust the `warnings` input to match your project's needs.
-
-4. **Exclude problematic warnings temporarily**: Use `exclude-warning` to temporarily exclude warnings from upstream dependencies or issues that take time to fix:
-   ```yaml
-   exclude-warning: 'UserWarning,RuntimeWarning'  # Exclude multiple warnings
-   ```
-
-5. **Path considerations**: Make sure the `html-path` points to where your build process outputs HTML files.
-
-5. **Integration with existing workflows**: This action can be easily added to existing CI/CD pipelines.
-
-6. **Issue management**: When using `create-issue: 'true'`, consider:
-   - Setting up issue templates for consistency
-   - Using branch-specific conditions to avoid duplicate issues
-   - Implementing automatic issue closing when warnings are resolved
-
-7. **Artifact usage**: Artifacts are perfect for:
-   - Detailed offline review of warnings
-   - Sharing warning reports with team members
-   - Historical tracking of warning trends
-
-8. **Performance considerations**: For large HTML output directories, consider:
-   - Using specific paths rather than scanning entire directories
-   - Limiting warning types to only those relevant to your project
-   - Setting appropriate artifact retention periods
-
-9. **Pull Request feedback**: 
-   - When `fail-on-warning` is `true`: The action posts detailed warning reports as PR comments
-   - When `create-issue` is `true`: The action posts simple notification comments linking to created issues
-   - Both features provide immediate feedback to developers without requiring log diving
-   - Requires `pull-requests: write` permission in your workflow
+If you're only using the basic warning check functionality, only `contents: read` is required. Add `pull-requests: write` when you want PR comments on warnings or when using issue creation in PR [...]
