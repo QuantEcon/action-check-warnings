@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    name: Test Check Warnings Action
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Test action with real test files (should find warnings)
+      id: test-with-warnings
+      continue-on-error: true
+      uses: ./
+      with:
+        html-path: 'tests'
+        fail-on-warning: 'true'
+        create-artifact: 'true'
+        artifact-name: 'test-warnings-report'
+        
+    - name: Verify warnings were found
+      run: |
+        if [ "${{ steps.test-with-warnings.outputs.warnings-found }}" != "true" ]; then
+          echo "ERROR: Expected to find warnings but none were found"
+          exit 1
+        fi
+        echo "SUCCESS: Found expected warnings (${{ steps.test-with-warnings.outputs.warning-count }} warnings)"
+        
+    - name: Test action without failing (should pass)
+      id: test-no-fail
+      uses: ./
+      with:
+        html-path: 'tests'
+        fail-on-warning: 'false'
+        
+    - name: Test clean files only (should find no warnings)
+      uses: ./
+      with:
+        html-path: 'tests/clean.html'
+        fail-on-warning: 'true'
+        
+    - name: Test exclude warning functionality
+      uses: ./
+      with:
+        html-path: 'tests'
+        warnings: 'DeprecationWarning'
+        exclude-warning: 'SyntaxWarning'
+        fail-on-warning: 'false'
+
+  test-different-warnings:
+    runs-on: ubuntu-latest
+    name: Test Different Warning Types
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Create test HTML with specific warnings
+      run: |
+        mkdir -p test-specific
+        cat > test-specific/runtime-warning.html << 'EOF'
+        <!DOCTYPE html>
+        <html>
+        <body>
+          <div class="cell_output">
+            <pre>RuntimeWarning: Something happened</pre>
+          </div>
+        </body>
+        </html>
+        EOF
+        
+    - name: Test specific warning type
+      uses: ./
+      with:
+        html-path: 'test-specific'
+        warnings: 'RuntimeWarning'
+        fail-on-warning: 'false'
+        
+    - name: Test excluded warning type
+      uses: ./
+      with:
+        html-path: 'test-specific'
+        warnings: 'UserWarning,DeprecationWarning'
+        fail-on-warning: 'true'  # Should pass because no UserWarning or DeprecationWarning
