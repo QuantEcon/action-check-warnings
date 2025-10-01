@@ -16,9 +16,9 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 ## 🚀 Quick Start
 
 ```yaml
-- name: Check for Python warnings
-  uses: QuantEcon/action-check-warnings@v1
-  with:
+    - name: Check for warnings
+      uses: QuantEcon/action-check-warnings@v1
+      with:
     html-path: './_build/html'
 ```
 
@@ -40,14 +40,14 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
 ```
 
 ### Advanced Usage with PR Comments
 
 ```yaml
 - name: Check for Python warnings with PR feedback
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -58,7 +58,7 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings with issue creation
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -71,7 +71,7 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings with assigned issue
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -85,7 +85,7 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings with artifact
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -98,7 +98,7 @@ A GitHub Action that scans HTML files for Python warnings within code cell outpu
 
 ```yaml
 - name: Check for Python warnings in build output
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     # Uses comprehensive default warnings (all Python warning types)
@@ -116,7 +116,7 @@ Sometimes you may want to temporarily exclude certain warning types (e.g., when 
 
 ```yaml
 - name: Check for Python warnings excluding upstream warnings
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     exclude-warning: 'UserWarning'  # Exclude single warning type
@@ -125,7 +125,7 @@ Sometimes you may want to temporarily exclude certain warning types (e.g., when 
 
 ```yaml
 - name: Check for Python warnings excluding multiple warning types
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     exclude-warning: 'UserWarning,RuntimeWarning,ResourceWarning'  # Exclude multiple warnings
@@ -138,7 +138,7 @@ You can combine custom warning lists with exclusions:
 
 ```yaml
 - name: Check for specific warnings but exclude problematic ones
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     warnings: 'UserWarning,DeprecationWarning,RuntimeWarning,ResourceWarning'
@@ -151,7 +151,7 @@ You can combine custom warning lists with exclusions:
 ```yaml
 - name: Check for Python warnings
   id: warning-check
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     fail-on-warning: 'false'
 
@@ -217,7 +217,7 @@ You can enable both issue creation and artifact generation simultaneously:
 
 ```yaml
 - name: Comprehensive warning check
-  uses: QuantEcon/meta/.github/actions/check-warnings@main
+  uses: QuantEcon/action-check-warnings@v1
   with:
     html-path: './_build/html'
     fail-on-warning: 'false'  # Don't fail, just report
@@ -328,7 +328,7 @@ jobs:
         jupyter-book build .
     
     - name: Check for Python warnings
-      uses: QuantEcon/meta/.github/actions/check-warnings@main
+      uses: QuantEcon/action-check-warnings@v1
       with:
         html-path: './_build/html'
         # Uses comprehensive default warnings (all Python warning types)
